@@ -15,6 +15,10 @@ mysql> select * from movies_view;
 +-------------------+---------+-------------+------------+--------+
 8 rows in set (0.02 sec)
 
+
+
+Create a query to find all movies in the Sci-Fi genre.
+
 mysql> select * from movies_view
     -> where Genre = 'Sci-Fi';
 +-------------------+---------+--------+------------+--------+
@@ -24,6 +28,9 @@ mysql> select * from movies_view
 | Starship Troopers |     129 | Sci-Fi |        7.2 | R      |
 +-------------------+---------+--------+------------+--------+
 
+
+
+Create a query to find all films that scored at least a 6.5 on IMDB
 
 mysql> select * from movies_view
     -> where IMDB_Score >= 6.5;
@@ -39,6 +46,10 @@ mysql> select * from movies_view
 +-------------------+---------+-------------+------------+--------+
 6 rows in set (0.00 sec)
 
+
+For parents who have young kids, but who don't want to sit through long children's movies, create a query to find all of the movies rated G or PG that are less than 100 minutes long.
+
+
 mysql> select * from movies_view
     -> where Rating='G' or Rating ='PG' and Runtime <100;
 +---------------+---------+-----------+------------+--------+
@@ -48,6 +59,8 @@ mysql> select * from movies_view
 | Monsters Inc. |      92 | Animation |        8.1 | G      |
 +---------------+---------+-----------+------------+--------+
 2 rows in set (0.00 sec)
+
+Create a query to show the average runtimes of movies scoring below a 7.5 on imdb, grouped by their respective genres.
 
 mysql> select avg(Runtime)
     -> from movies_view
@@ -61,6 +74,10 @@ mysql> select avg(Runtime)
 |      96.0000 |
 +--------------+
 3 rows in set (0.00 sec)
+
+
+This time let's find the average, maximum, and minimum IMDB score for movies of each rating.
+
 
 mysql> select avg(IMDB_Score)
     -> from movies_view
@@ -101,4 +118,18 @@ mysql> select max(IMDB_Score)
 |             8.1 |
 |             8.6 |
 +-----------------+
+
+That last query isn't very informative for ratings that only have 1 entry. Use a HAVING COUNT(*) > 1 clause to only show ratings with multiple movies showing.
+
+
 5 rows in set (0.00 sec)
+mysql> SELECT Rating
+    -> from movies_view
+    -> GROUP BY Rating
+    -> HAVING COUNT(*) > 1;
++--------+
+| Rating |
++--------+
+| PG     |
+| R      |
++--------+
