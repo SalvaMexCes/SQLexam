@@ -61,3 +61,44 @@ mysql> select avg(Runtime)
 |      96.0000 |
 +--------------+
 3 rows in set (0.00 sec)
+
+mysql> select avg(IMDB_Score)
+    -> from movies_view
+    -> group by Rating;
++-----------------+
+| avg(IMDB_Score) |
++-----------------+
+|         5.85000 |
+|         4.70000 |
+|         8.06667 |
+|         8.10000 |
+|         8.60000 |
++-----------------+
+
+mysql> select min(IMDB_Score)
+    -> from movies_view
+    -> group by rating;
++-----------------+
+| min(IMDB_Score) |
++-----------------+
+|             4.6 |
+|             4.7 |
+|             7.2 |
+|             8.1 |
+|             8.6 |
++-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select max(IMDB_Score)
+    -> from movies_view
+    -> group by rating;
++-----------------+
+| max(IMDB_Score) |
++-----------------+
+|             7.1 |
+|             4.7 |
+|             9.0 |
+|             8.1 |
+|             8.6 |
++-----------------+
+5 rows in set (0.00 sec)
