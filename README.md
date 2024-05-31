@@ -23,3 +23,41 @@ mysql> select * from movies_view
 | Howard the Duck   |     110 | Sci-Fi |        4.6 | PG     |
 | Starship Troopers |     129 | Sci-Fi |        7.2 | R      |
 +-------------------+---------+--------+------------+--------+
+
+
+mysql> select * from movies_view
+    -> where IMDB_Score >= 6.5;
++-------------------+---------+-------------+------------+--------+
+| Title             | Runtime | Genre       | IMDB_Score | Rating |
++-------------------+---------+-------------+------------+--------+
+| Starship Troopers |     129 | Sci-Fi      |        7.2 | R      |
+| Waltz With Bashir |      90 | Documentary |        8.0 | R      |
+| Spaceballs        |      96 | Comedy      |        7.1 | PG     |
+| Monsters Inc.     |      92 | Animation   |        8.1 | G      |
+| Deadpool          |     120 | Comedy      |        9.0 | R      |
+| Wolverine         |     130 | Action      |        8.6 | PG-13  |
++-------------------+---------+-------------+------------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select * from movies_view
+    -> where Rating='G' or Rating ='PG' and Runtime <100;
++---------------+---------+-----------+------------+--------+
+| Title         | Runtime | Genre     | IMDB_Score | Rating |
++---------------+---------+-----------+------------+--------+
+| Spaceballs    |      96 | Comedy    |        7.1 | PG     |
+| Monsters Inc. |      92 | Animation |        8.1 | G      |
++---------------+---------+-----------+------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select avg(Runtime)
+    -> from movies_view
+    -> where IMDB_Score < 7.5
+    -> group by Genre;
++--------------+
+| avg(Runtime) |
++--------------+
+|     119.5000 |
+|      83.0000 |
+|      96.0000 |
++--------------+
+3 rows in set (0.00 sec)
