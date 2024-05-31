@@ -163,3 +163,13 @@ mysql> select * from movies_view;
 | Wolverine       |     130 | Action    |        8.6 | PG-13  |
 +-----------------+---------+-----------+------------+--------+
 5 rows in set (0.00 sec)
+
+
+Show the ID number and rating of all of the Horror and Documentary movies in the database. Do this in only one query.
+
+*** Unfortunately I was not able to get this question to work, as my error coming back read "this is not a BASE table". I had to create a custom view for my table last night because I ran into some issues creating it. First I forgot to add the "Title" column for the movies, so my "Title" column in the "base table" was at the last column position, not the first. Then I had a duplicate row i had to remove, but mainly it was switiching the position of the columns, where I had to create a custom table view. ***
+
+The command input I tried executing was as follows:
+
+mysql> ALTER TABLE movies_view
+    -> ADD COLUMN ID int auto_increment PRIMARY KEY;
