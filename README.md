@@ -171,5 +171,4 @@ Show the ID number and rating of all of the Horror and Documentary movies in the
 
 The command input I tried executing was as follows:
 
-mysql> ALTER TABLE movies_view
-    -> ADD COLUMN ID int auto_increment PRIMARY KEY;
+mysql> ALTER TABLE movies_view ADD COLUMN ID int auto_increment PRIMARY KEY;
