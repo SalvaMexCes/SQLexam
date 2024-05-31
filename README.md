@@ -142,3 +142,24 @@ mysql> SELECT Rating
 | PG     |
 | R      |
 +--------+
+
+
+
+
+Make the movie list more child-friendly. Delete all entries that have a rating of R. Remember to record your queries in a README.md file
+
+mysql> DELETE FROM movies_view
+    -> WHERE Rating = 'R';
+Query OK, 3 rows affected (0.01 sec)
+
+mysql> select * from movies_view;
++-----------------+---------+-----------+------------+--------+
+| Title           | Runtime | Genre     | IMDB_Score | Rating |
++-----------------+---------+-----------+------------+--------+
+| Howard the Duck |     110 | Sci-Fi    |        4.6 | PG     |
+| Lavalantula     |      83 | Horror    |        4.7 | TV-14  |
+| Spaceballs      |      96 | Comedy    |        7.1 | PG     |
+| Monsters Inc.   |      92 | Animation |        8.1 | G      |
+| Wolverine       |     130 | Action    |        8.6 | PG-13  |
++-----------------+---------+-----------+------------+--------+
+5 rows in set (0.00 sec)
