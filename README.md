@@ -17,6 +17,7 @@ mysql> select * from movies_view;
 
 
 
+
 Create a query to find all movies in the Sci-Fi genre.
 
 mysql> select * from movies_view
@@ -27,6 +28,7 @@ mysql> select * from movies_view
 | Howard the Duck   |     110 | Sci-Fi |        4.6 | PG     |
 | Starship Troopers |     129 | Sci-Fi |        7.2 | R      |
 +-------------------+---------+--------+------------+--------+
+
 
 
 
@@ -47,8 +49,9 @@ mysql> select * from movies_view
 6 rows in set (0.00 sec)
 
 
-For parents who have young kids, but who don't want to sit through long children's movies, create a query to find all of the movies rated G or PG that are less than 100 minutes long.
 
+
+For parents who have young kids, but who don't want to sit through long children's movies, create a query to find all of the movies rated G or PG that are less than 100 minutes long.
 
 mysql> select * from movies_view
     -> where Rating='G' or Rating ='PG' and Runtime <100;
@@ -59,6 +62,9 @@ mysql> select * from movies_view
 | Monsters Inc. |      92 | Animation |        8.1 | G      |
 +---------------+---------+-----------+------------+--------+
 2 rows in set (0.00 sec)
+
+
+
 
 Create a query to show the average runtimes of movies scoring below a 7.5 on imdb, grouped by their respective genres.
 
@@ -76,8 +82,9 @@ mysql> select avg(Runtime)
 3 rows in set (0.00 sec)
 
 
-This time let's find the average, maximum, and minimum IMDB score for movies of each rating.
 
+
+This time let's find the average, maximum, and minimum IMDB score for movies of each rating.
 
 mysql> select avg(IMDB_Score)
     -> from movies_view
@@ -119,8 +126,10 @@ mysql> select max(IMDB_Score)
 |             8.6 |
 +-----------------+
 
-That last query isn't very informative for ratings that only have 1 entry. Use a HAVING COUNT(*) > 1 clause to only show ratings with multiple movies showing.
 
+
+
+That last query isn't very informative for ratings that only have 1 entry. Use a HAVING COUNT(*) > 1 clause to only show ratings with multiple movies showing.
 
 5 rows in set (0.00 sec)
 mysql> SELECT Rating
